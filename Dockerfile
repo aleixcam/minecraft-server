@@ -1,8 +1,10 @@
 FROM ubuntu:latest
 
 RUN apt update \
-	&& apt upgrade \
-	&& apt install git openjdk-8-jre-headless wget screen zip unzip
+	&& apt upgrade -y \
+	&& apt install -y git openjdk-8-jre-headless wget screen zip unzip \
+	&& apt autoremove \
+	&& apt autoclean
 
 RUN mkdir /opt/buildtools && cd $_ \
 	&& wget -O BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar \
